@@ -3,22 +3,24 @@ import re
 import googletrans
 import functions
 
-location_documents = r"/Users/philipp/Projects/PycharmProjects/PDF-scraping/pdf_input"# change this to location of folder where pdfs are. (i.e usually inside /Documents)
+location_documents = r"/Users/philipp/Projects/PycharmProjects/PDF-scraping/pdf_input" # change this to location of folder where pdfs are. (i.e usually inside /Documents)
 ls2 = []
 os.chdir("pdf_input/")
 l = os.listdir()
+
 for ls in l:
     a = os.path.splitext(ls)
     if a[1] == ".pdf":
         a = "".join(a)
         ls2.append(a)
+
 # find all pdfs inside the folder.
 for items in ls2:
     try:
-        if functions.check_dir(items) == False: #check if the pdf file is already translated and appended to csv
-            #call check_dir function in functions.py
+        if not functions.check_dir(items):  # check if the pdf file is already translated and appended to csv
+            # call check_dir function in functions.py
             i = 1
-            with open("txt23.txt", "r") as f: # check for known arabic string format of the pdf.
+            with open("txt23.txt", "r") as f:  # check for known arabic string format of the pdf.
                 for line in f:
                     if "نوع الخدمة" in line:
                         line = line.split()
@@ -55,7 +57,7 @@ for items in ls2:
                             else:
                                 break
                         zero1 = " ".join(zero)
-                    i+=1
+                    i += 1
                 four = "هبوط ترنش خدمات"
             f.close()
             with open("txt23_eng.txt", "r") as t: # extract numbers and numeric values using regular expression.
@@ -67,7 +69,7 @@ for items in ls2:
                     if i != 0:
                         break
                     one = item.group(0)
-                    i+=1
+                    i += 1
                 patt2 = re.compile(r"\b\d{12} ")
                 matches1 = patt2.finditer(cont)
                 for item in matches1:

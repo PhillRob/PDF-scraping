@@ -47,7 +47,7 @@ def check_dir(fl_name):  # check if the given pdf is already extracted, translat
 			return False
 
 
-def append_txt(name):  # append name of extracted pdf into a text file for future refrence.
+def append_txt(name):  # append name of extracted pdf into a text file for future reference.
 	os.chdir(f"{location_documents}")
 	with open("list.txt", "a") as txe:
 		txe.write(f"\n{name}")
