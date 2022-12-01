@@ -3,11 +3,10 @@ import re
 import googletrans
 import functions
 
-location_documents = r"/Users/philipp/Projects/PycharmProjects/PDF-scraping/pdf_input" # change this to location of folder where pdfs are. (i.e usually inside /Documents)
+location_documents = r"/home/r0h8n/Desktop/note/PDF-scraping/pdf_input" # change this to location of folder where pdfs are. (i.e usually inside /Documents)
 ls2 = []
-os.chdir("pdf_input/")
+functions.change_name()
 l = os.listdir()
-
 for ls in l:
     a = os.path.splitext(ls)
     if a[1] == ".pdf":
