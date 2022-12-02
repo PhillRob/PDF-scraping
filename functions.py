@@ -39,7 +39,7 @@ def check_dir(fl_name):  # check if the given pdf is already extracted, translat
 		for line in tx:
 			dirs.append(line[:-1])
 		if fl_name in dirs:
-			print(f"{fl_name}  in directory")
+			print(f"{fl_name} found in the directory")
 			return True
 		else:
 			run_command(fl_name)
