@@ -19,9 +19,9 @@ def run_command(name_pdf):
 	os.chdir(f"{home_locations}")
 	os.system(fr"pdftoppm -jpeg {location_documents}/{name_pdf} new12")  # convert PDF to image for OCR
 	time.sleep(1)
-	os.system(r"tesseract new12-1.jpg txt23 -l ara --dpi 600")  # use OCR to extract arabic text.
+	os.system(r"tesseract new12-1.jpg temp -l ara --dpi 300")  # use OCR to extract arabic text.
 	time.sleep(1)
-	os.system(r"tesseract new12-1.jpg txt23_eng -l eng --dpi 600")  # use OCR to extract numeric text.
+	os.system(r"tesseract new12-1.jpg temp_en -l eng --dpi 300")  # use OCR to extract numeric text.
 
 
 def append_csv(rown):  # append the provided value into the csv
@@ -52,5 +52,13 @@ def append_txt(name):  # append name of extracted pdf into a text file for futur
 	with open("list.txt", "a") as txe:
 		txe.write(f"\n{name}")
 
-
+def change_name():  # check if there is a space in pdf name and eliminate the space, as spaces broke the script.
+    os.chdir(location_documents)
+    ls = os.listdir()
+    for item in ls:
+        check = os.path.splitext(item)
+        if check[1] == ".pdf":
+            if " " in item:
+                item2 = item.split(" ")
+                os.rename(item, item2[-1])
 

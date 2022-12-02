@@ -11,9 +11,3 @@ Final product of the project.
 ## Logic
 This script use `poppler-utils` to convert a PDF into an image and then uses `tesseract-ocr` and arabic `tesdata` to extract the text. We run the ocr 2 times as the arabic ocr can't accurately extract numeric values. Finally we use python`s csv library  to append the csv and also write name of extracted pdfs into a text file for future reference to reduce redundancy.
 
-
-sudo apt install tesseract-ocr
-sudo apt install tesseract-ocr-ara
-sudo apt install poppler-utils
-
-pip install googletrans==4.0.0-rc1
