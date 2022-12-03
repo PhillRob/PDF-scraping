@@ -17,11 +17,11 @@ def get_trans(a):  # Take a text and detect a language and  translate it into en
 
 def run_command(name_pdf):
 	os.chdir(f"{home_locations}")
-	os.system(fr"pdftoppm -jpeg {location_documents}/{name_pdf} new12")  # convert PDF to image for OCR
+	os.system(fr"pdftoppm -jpeg {location_documents}/{name_pdf} temp")  # convert PDF to image for OCR
 	time.sleep(1)
-	os.system(r"tesseract new12-1.jpg temp -l ara --dpi 300")  # use OCR to extract arabic text.
+	os.system(r"tesseract temp-1.jpg temp -l ara --dpi 300")  # use OCR to extract arabic text.
 	time.sleep(1)
-	os.system(r"tesseract new12-1.jpg temp_en -l eng --dpi 300")  # use OCR to extract numeric text.
+	os.system(r"tesseract temp-1.jpg temp_en -l eng --dpi 300")  # use OCR to extract numeric text.
 
 
 def append_csv(rown):  # append the provided value into the csv
